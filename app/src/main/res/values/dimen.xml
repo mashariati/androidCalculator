@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_text_size">@dimen/_32ssp</dimen>
+    <dimen name="button_text_size_big">@dimen/_35ssp</dimen>
+    <dimen name="button_default_margin">@dimen/_7sdp</dimen>
+    <dimen name="button_size">@dimen/_64sdp</dimen>
+    <dimen name="text_view_text_size_small">@dimen/_16ssp</dimen>
+    <dimen name="text_view_text_size_big">@dimen/_65ssp</dimen>
+</resources>

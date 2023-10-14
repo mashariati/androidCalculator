@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|bottom"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:weightSum="1">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/textViewCalculate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_view_text_size_small"
+            android:layout_gravity="top|right"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:textColor="?attr/colorOnPrimary"
+            android:layoutDirection="ltr"
+            android:gravity="top|right"
+            android:text=""
+            android:paddingHorizontal="@dimen/_15sdp"
+            />
+    </FrameLayout>
+
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:paddingHorizontal="@dimen/_8sdp"
+        android:scrollbars="none"
+        android:layout_marginBottom="@dimen/_1sdp"
+        >
+
+        <TextView
+            android:id="@+id/text_view_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="@dimen/text_view_text_size_big" />
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/_7sdp"
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp">
+        <ImageView
+            android:id="@+id/btnDel"
+            android:layout_marginRight="@dimen/_25sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="match_parent"
+            android:backgroundTint="?attr/colorPrimary"
+            android:src="@drawable/ic_backspace"
+            app:tint="?attr/colorTertiary"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/btnHistory"-->
+<!--            android:layout_marginLeft="@dimen/_12sdp"-->
+<!--            android:layout_width="@dimen/_18sdp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:backgroundTint="?attr/colorPrimary"-->
+<!--            android:src="@drawable/ic_history"-->
+<!--            app:tint="?attr/colorTertiary"/>-->
+<!--        <ImageView-->
+<!--            android:id="@+id/btnSetting"-->
+<!--            android:layout_marginLeft="@dimen/_12sdp"-->
+<!--            android:layout_width="@dimen/_18sdp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:backgroundTint="?attr/colorPrimary"-->
+<!--            android:src="@drawable/ic_settings"-->
+<!--            app:tint="?attr/colorTertiary"/>-->
+        <ImageView
+            android:id="@+id/btnParentheses"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="match_parent"
+            android:backgroundTint="?attr/colorPrimary"
+            android:src="@drawable/ic_code_parentheses"
+            app:tint="?attr/colorTertiary"/>
+    </LinearLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center"
+        android:paddingHorizontal="@dimen/button_default_margin"
+        android:paddingBottom="@dimen/_25sdp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/button_default_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginLeft="@dimen/button_default_margin"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorTertiary">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="AC"
+                    android:textColor="?attr/colorOnTertiary"
+                    android:textSize="@dimen/button_text_size" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorTertiary">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPN"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="+/-"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:textColor="?attr/colorOnTertiary"
+                    android:textSize="@dimen/button_text_size" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorTertiary">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPercent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="%"
+                    android:textColor="?attr/colorOnTertiary"
+                    android:textSize="@dimen/button_text_size" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorSecondary">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDivision"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="÷"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/button_default_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginLeft="@dimen/button_default_margin"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="7"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="8"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="9"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorSecondary">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnMultiplication"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="×"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/button_default_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginLeft="@dimen/button_default_margin"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="4"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="5"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="6"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorSecondary">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnMinuse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:background="?selectableItemBackground"
+                    android:text="-"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/button_default_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginLeft="@dimen/button_default_margin"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="1"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="2"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="3"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorSecondary">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPlus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="+"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/button_default_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginLeft="@dimen/button_default_margin"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPower"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="×²"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="0"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorPrimaryVariant">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDot"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text=","
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/button_text_size_big" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginRight="@dimen/button_default_margin"
+                android:background="@drawable/shape_btn"
+                android:backgroundTint="?attr/colorSecondary">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnEqual"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:text="="
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/button_text_size" />
+            </FrameLayout>
+
+
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</LinearLayout>
