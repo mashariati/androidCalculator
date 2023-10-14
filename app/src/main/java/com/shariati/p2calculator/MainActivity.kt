@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
                 binding.textViewCalculate?.text = ""
                 parenthesesCounter = 0
                 isParenthesesOpen = false
+                println("hi")
             } else {
                 isParenthesesOpen = false
                 val oldCalculateText = binding.textViewCalculate?.text.toString()
